@@ -17,12 +17,14 @@ if [ -z "${APP}" ]; then
     exit 1
 fi
 
-[ -f "${SRC}/build.sh" ] || {
-    bash -x src/${APP}/build.sh
+[ -f "${SRC}/build.sh" ] && {
+    bash -x ${SRC}/build.sh
 }
 
-[ -f "${SRC}/nfpm.yaml" ] || {
+[ -f "${SRC}/nfpm.yaml" ] && {
     install_nfpm
+    cd ${SRC}
+
     nfpm pkg --packager deb 
 }
 
