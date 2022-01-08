@@ -1,0 +1,11 @@
+name: prometheus-node-exporter
+version: v1.3.1
+arch: amd64
+section: default
+priority: extra
+license: MIT
+maintainer: Vitaliy Vasilenko <source@vitalvas.com>
+
+contents:
+  - src: node_exporter
+    dst: /usr/local/bin/node_exporter
