@@ -27,3 +27,8 @@ fi
 }
 
 ls -lah .
+
+for pkgfullname in $(ls *.deb); do
+    pkgname=$(echo ${pkgfullname} | awk -F'_' '{print $1}')
+    curl --silent --fail --upload-file ${pkgfullname} https://craft.vitalvas.com/upload/repo/deb/prometheus/${pkgname}/${pkgfullname}
+done
