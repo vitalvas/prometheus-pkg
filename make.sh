@@ -23,9 +23,7 @@ fi
 
 [ -f "${SRC}/nfpm.yaml" ] && {
     install_nfpm
-    cd ${SRC}
-
-    nfpm pkg --packager deb 
+    nfpm pkg --packager deb -f ${SRC}/nfpm.yaml
 }
 
 ls -lah .
