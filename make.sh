@@ -7,9 +7,9 @@ APP=$1
 SRC="src/${APP}"
 
 function install_nfpm {
-    echo 'deb [trusted=yes] https://repo.goreleaser.com/apt/ /' | tee /etc/apt/sources.list.d/goreleaser.list
-    apt update
-    apt install -qy nfpm
+    echo 'deb [trusted=yes] https://repo.goreleaser.com/apt/ /' | sudo tee /etc/apt/sources.list.d/goreleaser.list
+    sudo apt update
+    sudo apt install -qy nfpm
 }
 
 if [ -z "${APP}" ]; then
