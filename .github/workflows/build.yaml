@@ -1,0 +1,21 @@
+name: Build
+
+on:
+  push:
+    branches:
+      - master
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+
+    strategy:
+      matrix:
+        app_name:
+          - node-exporter
+    
+    steps:
+      - uses: actions/checkout@v2
+      
+      - name: Build
+        run: bash -x make.sh ${{ matrix.app_name }}
