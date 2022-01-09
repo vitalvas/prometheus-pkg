@@ -27,5 +27,9 @@ jobs:
         run: bash -x build.sh
         working-directory: src/${{ matrix.app_name }}
 
+      - name: Build deb package
+        run: nfpm pkg --packager deb -f nfpm.yaml
+        working-directory: src/${{ matrix.app_name }}
+
       - name: Make
         run: bash -x make.sh ${{ matrix.app_name }}

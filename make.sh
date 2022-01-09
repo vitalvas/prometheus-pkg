@@ -12,10 +12,6 @@ if [ -z "${APP}" ]; then
     exit 1
 fi
 
-[ -f "${SRC}/nfpm.yaml" ] && {
-    nfpm pkg --packager deb -f ${SRC}/nfpm.yaml
-}
-
 ls -lah .
 
 for pkgfullname in $(ls *.deb); do
