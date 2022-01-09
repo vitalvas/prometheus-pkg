@@ -31,5 +31,13 @@ jobs:
         run: nfpm pkg --packager deb -f nfpm.yaml
         working-directory: src/${{ matrix.app_name }}
 
-      - name: Make
-        run: bash -x make.sh ${{ matrix.app_name }}
+      - name: Upload packages
+        working-directory: src/${{ matrix.app_name }}
+        env:
+          CRAFT_USER_NAME: ${{ secrets.CRAFT_USER_NAME }}
+          CRAFT_USER_PASS: ${{ secrets.CRAFT_USER_PASS }}
+        run: |
+          wget https://github.com/vitalvas/craft/raw/master/upload_pkg.sh
+          for pkgfullname in $(ls *.deb); do
+            bash upload_pkg.sh prometheus ${pkgfullname}
+          done
