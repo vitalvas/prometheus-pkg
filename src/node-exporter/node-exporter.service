@@ -1,0 +1,14 @@
+[Unit]
+Description=Node Exporter
+AssertPathExists=/etc/default/node-exporter
+
+[Service]
+Type=simple
+User=root
+Restart=always
+RestartSec=5
+ExecStart=/usr/local/bin/node_exporter $OPTIONS
+EnvironmentFile=/etc/default/node-exporter
+
+[Install]
+WantedBy=multi-user.target
