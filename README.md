@@ -12,7 +12,11 @@ apt install -qy apt-transport-https
 Add new repo:
 
 ```shell
-echo "deb [trusted=yes] https://repo.vitalvas.com/prometheus/deb main/" | tee /etc/apt/sources.list.d/vitalvas-prometheus.list
-echo -e "Package: *\nPin: origin repo.vitalvas.com\nPin-Priority: 900\n" | tee /etc/apt/preferences.d/99repo-vitalvas-com
+mkdir /etc/apt/keyrings
+
+wget -q -O /etc/apt/keyrings/vitalvas-prometheus-ubuntu.gpg https://repo.vitalvas.com/prometheus/ubuntu/sign-key.gpg
+
+echo "deb [signed-by=/etc/apt/keyrings/vitalvas-prometheus-ubuntu.gpg] https://repo.vitalvas.com/prometheus/ubuntu common main" | tee /etc/apt/sources.list.d/vitalvas-prometheus.list
+
 apt update -qy
 ```
