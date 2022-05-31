@@ -2,6 +2,8 @@ name: Build
 
 on:
   push:
+    paths:
+      - 'src/**'
     branches:
       - master
 
@@ -16,7 +18,7 @@ jobs:
           - blackbox-exporter
 
     steps:
-      - uses: actions/checkout@v2
+      - uses: actions/checkout@v3
 
       - name: Install NFPM
         run: |
