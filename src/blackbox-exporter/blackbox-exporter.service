@@ -6,7 +6,6 @@ AssertPathExists=/etc/default/blackbox-exporter
 
 [Service]
 Type=simple
-User=root
 Restart=always
 RestartSec=5
 User=prometheus
