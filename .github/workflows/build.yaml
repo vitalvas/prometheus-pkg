@@ -34,8 +34,10 @@ jobs:
         run: nfpm pkg --packager deb -f nfpm.yaml
         working-directory: src/${{ matrix.app_name }}
 
-      - name: 'Upload Artifact'
-        uses: actions/upload-artifact@v3
-        with:
-          retention-days: 1
-          path: src/${{ matrix.app_name }}/*.deb
+      - name: 'Upload packages'
+        working-directory: src/${{ matrix.app_name }}
+        env:
+          REPO_UPLOAD_ADDR: ${{ secrets.REPO_UPLOAD_ADDR }}
+          REPO_USER_NAME: ${{ secrets.REPO_USER_NAME }}
+          REPO_USER_PASS: ${{ secrets.REPO_USER_PASS }}
+        run: ../../tools/upload.sh
