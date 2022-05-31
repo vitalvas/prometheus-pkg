@@ -33,3 +33,9 @@ jobs:
       - name: Build deb package
         run: nfpm pkg --packager deb -f nfpm.yaml
         working-directory: src/${{ matrix.app_name }}
+
+      - name: 'Upload Artifact'
+        uses: actions/upload-artifact@v3
+        with:
+          retention-days: 1
+          path: src/${{ matrix.app_name }}/*.deb
