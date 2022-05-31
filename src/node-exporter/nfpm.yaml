@@ -1,5 +1,5 @@
 name: prometheus-node-exporter
-version: v1.3.1-5
+version: v1.3.1-6
 arch: amd64
 section: net
 priority: extra
@@ -19,3 +19,9 @@ contents:
     type: config
   - src: node-exporter.service
     dst: /lib/systemd/system/node-exporter.service
+  - dst: /var/lib/prometheus/node-exporter/textfile
+    type: dir
+    file_info: 
+      mode: 0755
+      owner: prometheus
+      group: prometheus
