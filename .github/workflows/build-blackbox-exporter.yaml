@@ -1,21 +1,15 @@
-name: Build
+name: Build blackbox-exporter
 
 on:
   push:
     paths:
-      - 'src/**'
+      - 'src/blackbox-exporter/**'
     branches:
       - master
 
 jobs:
   build:
     runs-on: ubuntu-latest
-
-    strategy:
-      matrix:
-        app_name:
-          - node-exporter
-          - blackbox-exporter
 
     steps:
       - uses: actions/checkout@v3
@@ -28,14 +22,14 @@ jobs:
       
       - name: Build
         run: bash -x build.sh
-        working-directory: src/${{ matrix.app_name }}
+        working-directory: src/blackbox-exporter
 
       - name: Build deb package
         run: nfpm pkg --packager deb -f nfpm.yaml
-        working-directory: src/${{ matrix.app_name }}
+        working-directory: src/blackbox-exporter
 
       - name: 'Upload packages'
-        working-directory: src/${{ matrix.app_name }}
+        working-directory: src/blackbox-exporter
         env:
           REPO_UPLOAD_ADDR: ${{ secrets.REPO_UPLOAD_ADDR }}
           REPO_USER_NAME: ${{ secrets.REPO_USER_NAME }}
