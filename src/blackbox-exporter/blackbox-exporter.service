@@ -9,6 +9,8 @@ Type=simple
 User=root
 Restart=always
 RestartSec=5
+User=prometheus
+Group=prometheus
 ExecStart=/usr/local/bin/blackbox_exporter $OPTIONS
 EnvironmentFile=/etc/default/blackbox-exporter
 
