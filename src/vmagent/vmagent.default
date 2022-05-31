@@ -1,0 +1,9 @@
+OPTIONS='-enableTCP6 -envflag.enable -envflag.prefix=VM_'
+
+VM_remoteWrite_tmpDataPath=/var/lib/prometheus/vmagent-data
+VM_remoteWrite_flushInterval=30s
+VM_httpListenAddr=localhost:8429
+VM_memory_allowedBytes=128MB
+
+VM_promscrape_config=/var/lib/prometheus/vmagent.json
+VM_promscrape_configCheckInterval=1m

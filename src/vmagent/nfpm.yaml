@@ -1,0 +1,26 @@
+name: prometheus-vmagent
+version: v1.77.2-0
+arch: amd64
+section: net
+priority: extra
+license: MIT
+maintainer: Vitaliy Vasilenko <source@vitalvas.com>
+description: VictoriaMetrics Agent
+homepage: https://github.com/vitalvas/prometheus-pkg
+
+scripts:
+  postinstall: postinstall.sh
+
+contents:
+  - src: vmagent-prod
+    dst: /usr/local/bin/vmagent
+  - src: vmagent.default
+    dst: /etc/default/vmagent
+  - src: vmagent.service
+    dst: /lib/systemd/system/vmagent.service
+  - dst: /var/lib/prometheus/vmagent-data
+    type: dir
+    file_info: 
+      mode: 0755
+      owner: prometheus
+      group: prometheus

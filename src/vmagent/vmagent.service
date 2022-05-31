@@ -1,0 +1,18 @@
+[Unit]
+Description=VictoriaMetrics Agent
+Wants=network-online.target
+After=network-online.target
+AssertPathExists=/etc/default/vmagent
+
+[Service]
+Type=simple
+Restart=always
+RestartSec=5
+User=prometheus
+Group=prometheus
+ExecStart=/usr/local/bin/vmagent $OPTIONS
+EnvironmentFile=/etc/default/vmagent
+EnvironmentFile=-/var/lib/prometheus/vmagent.env
+
+[Install]
+WantedBy=multi-user.target
