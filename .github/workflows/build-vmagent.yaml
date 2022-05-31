@@ -1,4 +1,4 @@
-name: Build node-exporter
+name: Build vmagent
 
 on:
   push:
