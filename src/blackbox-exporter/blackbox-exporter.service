@@ -1,5 +1,7 @@
 [Unit]
-Description=Nlackbox Exporter
+Description=Blackbox Exporter
+Wants=network-online.target
+After=network-online.target
 AssertPathExists=/etc/default/blackbox-exporter
 
 [Service]

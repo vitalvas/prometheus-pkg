@@ -8,6 +8,9 @@ maintainer: Vitaliy Vasilenko <source@vitalvas.com>
 description: Prometheus Blackbox Exporter
 homepage: https://github.com/vitalvas/prometheus-pkg
 
+scripts:
+  postinstall: postinstall.sh
+
 contents:
   - src: blackbox_exporter
     dst: /usr/local/bin/blackbox_exporter

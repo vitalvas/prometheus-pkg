@@ -1,5 +1,5 @@
 name: prometheus-node-exporter
-version: v1.3.1-1
+version: v1.3.1-2
 arch: amd64
 section: net
 priority: extra
@@ -7,6 +7,9 @@ license: MIT
 maintainer: Vitaliy Vasilenko <source@vitalvas.com>
 description: Prometheus Node Exporter
 homepage: https://github.com/vitalvas/prometheus-pkg
+
+scripts:
+  postinstall: postinstall.sh
 
 contents:
   - src: node_exporter
