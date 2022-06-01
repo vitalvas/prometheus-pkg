@@ -1,0 +1,17 @@
+[Unit]
+Description=Postgres Exporter
+Wants=network-online.target
+After=network-online.target
+AssertPathExists=/etc/default/postgres-exporter
+
+[Service]
+Type=simple
+Restart=always
+RestartSec=5
+User=postgres
+Group=postgres
+ExecStart=/usr/local/bin/postgres_exporter $OPTIONS
+EnvironmentFile=/etc/default/postgres-exporter
+
+[Install]
+WantedBy=multi-user.target

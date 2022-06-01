@@ -1,0 +1,21 @@
+name: prometheus-postgres-exporter
+version: v0.10.1-0
+arch: amd64
+section: net
+priority: extra
+license: MIT
+maintainer: Vitaliy Vasilenko <source@vitalvas.com>
+description: Prometheus Postgres Exporter
+homepage: https://github.com/vitalvas/prometheus-pkg
+
+scripts:
+  postinstall: postinstall.sh
+
+contents:
+  - src: postgres_exporter
+    dst: /usr/local/bin/postgres_exporter
+  - src: postgres-exporter.default
+    dst: /etc/default/postgres-exporter
+    type: config
+  - src: postgres-exporter.service
+    dst: /lib/systemd/system/postgres-exporter.service

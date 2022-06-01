@@ -1,0 +1,2 @@
+DATA_SOURCE_NAME="user=postgres host=/var/run/postgresql/ port=5432 sslmode=disable"
+OPTIONS=''
