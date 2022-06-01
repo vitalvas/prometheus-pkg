@@ -1,0 +1,17 @@
+[Unit]
+Description=Kafka Exporter
+Wants=network-online.target
+After=network-online.target
+AssertPathExists=/etc/default/kafka-exporter
+
+[Service]
+Type=simple
+Restart=always
+RestartSec=5
+User=prometheus
+Group=prometheus
+ExecStart=/usr/local/bin/kafka_exporter $OPTIONS
+EnvironmentFile=/etc/default/kafka-exporter
+
+[Install]
+WantedBy=multi-user.target

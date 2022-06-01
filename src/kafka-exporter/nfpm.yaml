@@ -1,0 +1,21 @@
+name: prometheus-kafka-exporter
+version: v1.3.1-6
+arch: amd64
+section: net
+priority: extra
+license: MIT
+maintainer: Vitaliy Vasilenko <source@vitalvas.com>
+description: Prometheus Kafka Exporter
+homepage: https://github.com/vitalvas/prometheus-pkg
+
+scripts:
+  postinstall: postinstall.sh
+
+contents:
+  - src: kafka_exporter
+    dst: /usr/local/bin/kafka_exporter
+  - src: kafka-exporter.default
+    dst: /etc/default/kafka-exporter
+    type: config
+  - src: kafka-exporter.service
+    dst: /lib/systemd/system/kafka-exporter.service

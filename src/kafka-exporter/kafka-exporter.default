@@ -1,0 +1,1 @@
+OPTIONS='--kafka.server=localhost:9092 --offset.show-all --kafka.version=2.6.0'
