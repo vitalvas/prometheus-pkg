@@ -1,6 +1,6 @@
 #!/bin/bash
 
-VERSION='0.10.1'
+VERSION='0.13.2'
 
 wget -q https://github.com/prometheus-community/postgres_exporter/releases/download/v${VERSION}/postgres_exporter-${VERSION}.linux-amd64.tar.gz
 tar --strip-components 1 -xvf postgres_exporter-${VERSION}.linux-amd64.tar.gz
