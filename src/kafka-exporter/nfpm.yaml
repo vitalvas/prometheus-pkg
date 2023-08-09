@@ -1,5 +1,5 @@
 name: prometheus-kafka-exporter
-version: v1.3.1-6
+version: v1.7.0-0
 arch: amd64
 section: net
 priority: extra
