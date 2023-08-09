@@ -1,5 +1,5 @@
 name: prometheus-bird-exporter
-version: v0.24.0-0
+version: v1.4.1-0
 arch: amd64
 section: net
 priority: extra
