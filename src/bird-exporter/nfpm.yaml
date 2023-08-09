@@ -1,0 +1,21 @@
+name: prometheus-bird-exporter
+version: v0.24.0-0
+arch: amd64
+section: net
+priority: extra
+license: MIT
+maintainer: Vitaliy Vasilenko <source@vitalvas.com>
+description: Prometheus Bird Exporter
+homepage: https://github.com/vitalvas/prometheus-pkg
+
+scripts:
+  postinstall: postinstall.sh
+
+contents:
+  - src: bird_exporter
+    dst: /usr/local/bin/bird_exporter
+  - src: bird-exporter.default
+    dst: /etc/default/bird-exporter
+    type: config
+  - src: bird-exporter.service
+    dst: /lib/systemd/system/bird-exporter.service

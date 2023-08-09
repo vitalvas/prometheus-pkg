@@ -1,0 +1,1 @@
+OPTIONS='-bird.v2 -bird.socket=/var/run/bird/bird.ctl'

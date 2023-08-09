@@ -1,0 +1,14 @@
+[Unit]
+Description=Bird Exporter
+AssertPathExists=/etc/default/bird-exporter
+
+[Service]
+Type=simple
+User=root
+Restart=always
+RestartSec=5
+ExecStart=/usr/local/bin/bird_exporter $OPTIONS
+EnvironmentFile=/etc/default/bird-exporter
+
+[Install]
+WantedBy=multi-user.target
