@@ -1,0 +1,17 @@
+[Unit]
+Description=Node Exporter for %i
+Wants=network-online.target
+After=network-online.target
+
+[Service]
+Type=simple
+Restart=always
+RestartSec=5
+User=prometheus
+Group=prometheus
+ExecStart=/usr/local/bin/node_exporter --collector.disable-defaults --collector.netdev --collector.netstat --collector.sockstat --collector.udp_queues --collector.arp $OPTIONS
+EnvironmentFile=/etc/default/node-exporter-%i
+NetworkNamespacePath=/var/run/netns/%i
+
+[Install]
+WantedBy=multi-user.target
