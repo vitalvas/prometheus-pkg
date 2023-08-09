@@ -1,5 +1,5 @@
 name: prometheus-vmagent
-version: v1.77.2-0
+version: v1.92.1-0
 arch: amd64
 section: net
 priority: extra
