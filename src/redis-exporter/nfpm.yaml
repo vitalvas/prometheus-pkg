@@ -1,0 +1,22 @@
+name: "pp-prometheus-${PKG_NAME}"
+version: "v${PKG_VERSION}-${GITHUB_RUN_NUMBER}"
+arch: "${PKG_ARCH}"
+section: net
+priority: extra
+license: MIT
+maintainer: Vitaliy Vasilenko <source@vitalvas.com>
+description: Prometheus Redis Exporter
+homepage: https://github.com/vitalvas/prometheus-pkg
+
+scripts:
+  preinstall: preinstall.sh
+  postinstall: postinstall.sh
+
+contents:
+  - src: tmp/redis_exporter
+    dst: /usr/local/bin/redis_exporter
+  - src: redis-exporter.default
+    dst: /etc/default/redis-exporter
+    type: config
+  - src: redis-exporter.service
+    dst: /lib/systemd/system/redis-exporter.service

@@ -1,0 +1,17 @@
+[Unit]
+Description=Redis Exporter
+Wants=network-online.target
+After=network-online.target
+AssertPathExists=/etc/default/redis-exporter
+
+[Service]
+Type=simple
+Restart=always
+RestartSec=5
+User=prometheus
+Group=prometheus
+ExecStart=/usr/local/bin/redis_exporter $OPTIONS
+EnvironmentFile=/etc/default/redis-exporter
+
+[Install]
+WantedBy=multi-user.target
