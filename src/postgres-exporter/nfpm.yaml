@@ -20,3 +20,5 @@ contents:
     type: config
   - src: postgres-exporter.service
     dst: /lib/systemd/system/postgres-exporter.service
+  - src: postgres-exporter@.service
+    dst: /lib/systemd/system/postgres-exporter@.service
