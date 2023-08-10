@@ -1,1 +1,1 @@
-OPTIONS='-bird.v2 -bird.socket=/var/run/bird/bird.ctl'
+OPTIONS='-bird.v2 -bird.socket=/var/run/bird/bird.ctl -web.listen-address=localhost:9324'

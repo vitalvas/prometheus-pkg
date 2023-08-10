@@ -29,6 +29,7 @@ if [ -d "tmp/" ]; then
     mkdir -p tmp/
 fi
 
+export PKG_NAME=${NAME}
 bash -x build.sh
 
 for deb_file_name in $(ls *.deb); do

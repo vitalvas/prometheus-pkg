@@ -1,6 +1,6 @@
-name: prometheus-bird-exporter
-version: v1.4.1-0
-arch: amd64
+name: "pp-prometheus-${PKG_NAME}"
+version: "v${PKG_VERSION}-${GITHUB_RUN_NUMBER}"
+arch: "${PKG_ARCH}"
 section: net
 priority: extra
 license: MIT
@@ -9,10 +9,11 @@ description: Prometheus Bird Exporter
 homepage: https://github.com/vitalvas/prometheus-pkg
 
 scripts:
+  preinstall: preinstall.sh
   postinstall: postinstall.sh
 
 contents:
-  - src: bird_exporter
+  - src: tmp/bird_exporter
     dst: /usr/local/bin/bird_exporter
   - src: bird-exporter.default
     dst: /etc/default/bird-exporter

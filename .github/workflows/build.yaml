@@ -18,6 +18,7 @@ jobs:
     strategy:
       matrix:
         src:
+          - bird-exporter
           - network-exporter
 
     steps:

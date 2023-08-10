@@ -1,8 +1,16 @@
 #!/bin/bash
 
+set -e
+
 VERSION='1.4.1'
+ARCHS=(amd64 arm64)
 
-wget -q https://github.com/czerwonk/bird_exporter/releases/download/${VERSION}/bird_exporter_${VERSION}_linux_amd64.tar.gz
-tar -xvf bird_exporter_${VERSION}_linux_amd64.tar.gz
+for ARCH in ${ARCHS[@]}; do
+    rm -Rf tmp/
+    mkdir -p tmp/
 
-cat ../../tools/scripts/postinstall.sh | sed 's/__name__/bird-exporter/g' > postinstall.sh
+    wget -q https://github.com/czerwonk/bird_exporter/releases/download/${VERSION}/bird_exporter_${VERSION}_linux_${ARCH}.tar.gz
+    tar -xvf bird_exporter_${VERSION}_linux_${ARCH}.tar.gz -C tmp/
+
+    env PKG_ARCH=${ARCH} PKG_VERSION=${VERSION} nfpm pkg --packager deb -f nfpm.yaml
+done
