@@ -12,7 +12,7 @@ scripts:
   postinstall: postinstall.sh
 
 contents:
-  - src: kafka_exporter
+  - src: tmp/kafka_exporter
     dst: /usr/local/bin/kafka_exporter
   - src: kafka-exporter.default
     dst: /etc/default/kafka-exporter

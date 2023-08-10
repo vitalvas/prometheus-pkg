@@ -1,5 +1,6 @@
-# prometheus-pkg
-Prometheus Packages
+# Prometheus Packages
+
+[![Build](https://github.com/vitalvas/prometheus-pkg/actions/workflows/build.yaml/badge.svg)](https://github.com/vitalvas/prometheus-pkg)
 
 ## Install
 
