@@ -1,4 +1,4 @@
-name: pp-prometheus-bird-exporter
+name: pp-prometheus-network-exporter
 version: "v${PKG_VERSION}-${GITHUB_RUN_NUMBER}"
 arch: "${PKG_ARCH}"
 section: net
