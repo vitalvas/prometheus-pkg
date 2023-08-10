@@ -9,6 +9,7 @@ description: Prometheus Blackbox Exporter
 homepage: https://github.com/vitalvas/prometheus-pkg
 
 scripts:
+  preinstall: preinstall.sh
   postinstall: postinstall.sh
 
 contents:
