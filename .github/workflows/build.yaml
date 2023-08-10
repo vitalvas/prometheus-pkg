@@ -21,8 +21,9 @@ jobs:
           - bird-exporter
           - blackbox-exporter
           - kafka-exporter
-          - node-exporter
           - network-exporter
+          - node-exporter
+          - postgres-exporter
 
     steps:
       - name: Checkout

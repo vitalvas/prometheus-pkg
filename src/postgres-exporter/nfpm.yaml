@@ -1,6 +1,6 @@
-name: prometheus-postgres-exporter
-version: v0.13.2-0
-arch: amd64
+name: "pp-prometheus-${PKG_NAME}"
+version: "v${PKG_VERSION}-${GITHUB_RUN_NUMBER}"
+arch: "${PKG_ARCH}"
 section: net
 priority: extra
 license: MIT
@@ -9,10 +9,11 @@ description: Prometheus Postgres Exporter
 homepage: https://github.com/vitalvas/prometheus-pkg
 
 scripts:
+  preinstall: preinstall.sh
   postinstall: postinstall.sh
 
 contents:
-  - src: postgres_exporter
+  - src: tmp/postgres_exporter
     dst: /usr/local/bin/postgres_exporter
   - src: postgres-exporter.default
     dst: /etc/default/postgres-exporter
