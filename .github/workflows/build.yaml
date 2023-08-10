@@ -24,6 +24,7 @@ jobs:
           - network-exporter
           - node-exporter
           - postgres-exporter
+          - vmagent
 
     steps:
       - name: Checkout

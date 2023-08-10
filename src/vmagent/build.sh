@@ -1,8 +1,14 @@
 #!/bin/bash
 
 VERSION='1.92.1'
+ARCHS=(amd64 arm64)
 
-wget -q https://github.com/VictoriaMetrics/VictoriaMetrics/releases/download/v${VERSION}/vmutils-linux-amd64-v${VERSION}.tar.gz
-tar -xvf vmutils-linux-amd64-v${VERSION}.tar.gz 
+for ARCH in ${ARCHS[@]}; do
+    rm -Rf tmp/
+    mkdir -p tmp/
 
-cat ../../tools/scripts/postinstall.sh | sed 's/__name__/vmagent/g' > postinstall.sh
+    wget -q https://github.com/VictoriaMetrics/VictoriaMetrics/releases/download/v${VERSION}/vmutils-linux-${ARCH}-v${VERSION}.tar.gz
+    tar -xvf vmutils-linux-${ARCH}-v${VERSION}.tar.gz -C tmp/
+
+    env PKG_ARCH=${ARCH} PKG_VERSION=${VERSION} nfpm pkg --packager deb -f nfpm.yaml
+done
