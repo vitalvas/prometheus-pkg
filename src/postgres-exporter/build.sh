@@ -10,7 +10,7 @@ for ARCH in ${ARCHS[@]}; do
     mkdir -p tmp/
 
     wget -q https://github.com/prometheus-community/postgres_exporter/releases/download/v${VERSION}/postgres_exporter-${VERSION}.linux-${ARCH}.tar.gz
-    tar --strip-components 1 -xvf postgres_exporter-${VERSION}.linux-${ARCH}.tar.gz
+    tar --strip-components 1 -xvf postgres_exporter-${VERSION}.linux-${ARCH}.tar.gz -C tmp/
 
     env PKG_ARCH=${ARCH} PKG_VERSION=${VERSION} nfpm pkg --packager deb -f nfpm.yaml
 done
