@@ -25,3 +25,15 @@ EOF
 
 apt update -qy
 ```
+
+## Packages
+
+| Package name | Description |
+| - | - |
+| pp-prometheus-bird-exporter | Exporter for Bird routing daemon |
+| pp-prometheus-blackbox-exporter | Blackbox exporter |
+| pp-prometheus-kafka-exporter | Kafka exporter |
+| pp-prometheus-network-exporter | Network exporter |
+| pp-prometheus-node-exporter | Node exporter |
+| pp-prometheus-postgres-exporter | PostgreSQL exporter |
+| pp-prometheus-vmagent | VictoriaMetrics Agent |
