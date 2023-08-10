@@ -15,7 +15,7 @@ for ARCH in ${ARCHS[@]}; do
     fi
 
     wget -q https://github.com/syepes/network_exporter/releases/download/${VERSION}/network_exporter_${VERSION}.Linux_${FILE_ARCH}.tar.gz
-    tar --strip-components 1 -xvf network_exporter_${VERSION}.Linux_${FILE_ARCH}.tar.gz -C tmp/
+    tar -xvf network_exporter_${VERSION}.Linux_${FILE_ARCH}.tar.gz -C tmp/
 
     env PKG_ARCH=${ARCH} PKG_VERSION=${VERSION} nfpm pkg --packager deb -f nfpm.yaml
 done
