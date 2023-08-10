@@ -36,4 +36,5 @@ apt update -qy
 | pp-prometheus-network-exporter | Network exporter |
 | pp-prometheus-node-exporter | Node exporter |
 | pp-prometheus-postgres-exporter | PostgreSQL exporter |
+| pp-prometheus-redis-exporter | Redis exporter |
 | pp-prometheus-vmagent | VictoriaMetrics Agent |
