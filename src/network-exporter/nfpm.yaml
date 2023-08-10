@@ -1,4 +1,4 @@
-name: pp-prometheus-network-exporter
+name: "pp-prometheus-${PKG_NAME}"
 version: "v${PKG_VERSION}-${GITHUB_RUN_NUMBER}"
 arch: "${PKG_ARCH}"
 section: net
