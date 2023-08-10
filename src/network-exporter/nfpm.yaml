@@ -13,12 +13,12 @@ scripts:
   postinstall: postinstall.sh
 
 contents:
-  - src: network_exporter
+  - src: tmp/network_exporter
     dst: /usr/local/bin/network_exporter
   - src: network-exporter.default
     dst: /etc/default/network-exporter
     type: config
-  - src: network_exporter.yml
+  - src: tmp/network_exporter.yml
     dst: /etc/prometheus/network_exporter.yml
     type: config
   - src: network-exporter.service

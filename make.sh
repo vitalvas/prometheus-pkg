@@ -24,6 +24,11 @@ cd src/${NAME}
 cat ../../tools/scripts/preinstall.sh | sed "s/__name__/${NAME}/g" > preinstall.sh
 cat ../../tools/scripts/postinstall.sh | sed "s/__name__/${NAME}/g" > postinstall.sh
 
+if [ -d "tmp/" ]; then
+    rm -Rf tmp/
+    mkdir -p tmp/
+fi
+
 bash -x build.sh
 
 for deb_file_name in $(ls *.deb); do
