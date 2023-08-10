@@ -1,5 +1,7 @@
 #!/bin/bash
 
+set -e
+
 VERSION='1.7.3'
 ARCHS=(amd64 arm64)
 
@@ -9,7 +11,7 @@ for ARCH in ${ARCHS[@]}; do
         FILE_ARCH="x86_64"
     fi
 
-    wget -q https://github.com/syepes/network_exporter/releases/download/${VERSION}/network_exporter-${VERSION}.Linux-${FILE_ARCH}.tar.gz
+    wget -q https://github.com/syepes/network_exporter/releases/download/${VERSION}/network_exporter_${VERSION}.Linux_${FILE_ARCH}.tar.gz
     tar --strip-components 1 -xvf network_exporter-${VERSION}.Linux-${FILE_ARCH}.tar.gz -C tmp/
 
     env PKG_ARCH=${ARCH} PKG_VERSION=${VERSION} nfpm pkg --packager deb -f nfpm.yaml
