@@ -1,6 +1,6 @@
-name: prometheus-node-exporter
-version: v1.6.1-3
-arch: amd64
+name: "pp-prometheus-${PKG_NAME}"
+version: "v${PKG_VERSION}-${GITHUB_RUN_NUMBER}"
+arch: "${PKG_ARCH}"
 section: net
 priority: extra
 license: MIT
@@ -9,13 +9,17 @@ description: Prometheus Node Exporter
 homepage: https://github.com/vitalvas/prometheus-pkg
 
 scripts:
+  preinstall: preinstall.sh
   postinstall: postinstall.sh
 
 contents:
-  - src: node_exporter
+  - src: tmp/node_exporter
     dst: /usr/local/bin/node_exporter
   - src: node-exporter.default
     dst: /etc/default/node-exporter
+    type: config
+  - src: node-exporter.subunit.default
+    dst: /etc/default/node-exporter.subunit
     type: config
   - src: node-exporter.service
     dst: /lib/systemd/system/node-exporter.service

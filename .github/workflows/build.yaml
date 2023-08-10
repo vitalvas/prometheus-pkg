@@ -21,6 +21,7 @@ jobs:
           - bird-exporter
           - blackbox-exporter
           - kafka-exporter
+          - node-exporter
           - network-exporter
 
     steps:

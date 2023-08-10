@@ -9,7 +9,8 @@ Restart=always
 RestartSec=5
 User=prometheus
 Group=prometheus
-ExecStart=/usr/local/bin/node_exporter --collector.disable-defaults --collector.netdev --collector.netstat --collector.sockstat --collector.udp_queues --collector.arp $OPTIONS
+ExecStart=/usr/local/bin/node_exporter $OPTIONS
+EnvironmentFile=/etc/default/node-exporter.subunit
 EnvironmentFile=-/etc/default/node-exporter-%i
 NetworkNamespacePath=/var/run/netns/%i
 

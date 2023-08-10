@@ -1,0 +1,1 @@
+OPTIONS='--collector.disable-defaults --collector.netdev --collector.netstat --collector.sockstat --collector.udp_queues --collector.arp'
