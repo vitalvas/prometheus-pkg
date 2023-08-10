@@ -1,6 +1,6 @@
-name: prometheus-blackbox-exporter
-version: v0.24.0-0
-arch: amd64
+name: "pp-prometheus-${PKG_NAME}"
+version: "v${PKG_VERSION}-${GITHUB_RUN_NUMBER}"
+arch: "${PKG_ARCH}"
 section: net
 priority: extra
 license: MIT
@@ -12,7 +12,7 @@ scripts:
   postinstall: postinstall.sh
 
 contents:
-  - src: blackbox_exporter
+  - src: tmp/blackbox_exporter
     dst: /usr/local/bin/blackbox_exporter
   - src: blackbox-exporter.default
     dst: /etc/default/blackbox-exporter
