@@ -1,0 +1,51 @@
+name: Build
+
+on:
+  push:
+    branches:
+      - 'master'
+  workflow_dispatch:
+
+permissions:
+  id-token: write
+  contents: read
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+    if: github.ref == 'refs/heads/master'
+
+    strategy:
+      matrix:
+        src:
+          - network-exporter
+
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v3
+
+      - name: Filter changes
+        uses: dorny/paths-filter@v2
+        id: changes
+        with:
+          filters: |
+            src:
+              - 'src/${{ matrix.src }}/**'
+
+      - name: Install NFPM
+        if: steps.changes.outputs.src == 'true' || github.event_name == 'workflow_dispatch'
+        run: |
+          echo 'deb [trusted=yes] https://repo.goreleaser.com/apt/ /' | sudo tee /etc/apt/sources.list.d/goreleaser.list
+          sudo apt update
+          sudo apt install -qy nfpm
+
+      - name: Configure AWS credentials
+        if: steps.changes.outputs.src == 'true' || github.event_name == 'workflow_dispatch'
+        uses: aws-actions/configure-aws-credentials@v2
+        with:
+          aws-region: us-east-1
+          role-to-assume: arn:aws:iam::966137286427:role/github-actions-prometheus-pkg
+
+      - name: Build
+        if: steps.changes.outputs.src == 'true' || github.event_name == 'workflow_dispatch'
+        run: ./make.sh ${{ matrix.src }}

@@ -1,8 +1,5 @@
 #!/bin/bash
 
-grep -q prometheus /etc/group || groupadd --system prometheus
-grep -q prometheus /etc/shadow || useradd -s /sbin/nologin --system -g prometheus prometheus
-
 if command -V systemctl >/dev/null 2>&1; then
     systemctl daemon-reload ||:
     systemctl unmask __name__ ||:

@@ -1,0 +1,17 @@
+[Unit]
+Description=Network Exporter
+AssertPathExists=/etc/default/network-exporter
+
+[Service]
+Type=simple
+Restart=always
+RestartSec=5
+User=prometheus
+Group=prometheus
+ExecStart=/usr/local/bin/network_exporter $OPTIONS
+EnvironmentFile=/etc/default/network-exporter
+CapabilityBoundingSet=CAP_NET_BIND_SERVICE CAP_NET_RAW
+AmbientCapabilities=CAP_NET_BIND_SERVICE CAP_NET_RAW
+
+[Install]
+WantedBy=multi-user.target
