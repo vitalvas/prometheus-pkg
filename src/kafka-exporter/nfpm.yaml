@@ -1,6 +1,6 @@
-name: prometheus-kafka-exporter
-version: v1.7.0-0
-arch: amd64
+name: "pp-prometheus-${PKG_NAME}"
+version: "v${PKG_VERSION}-${GITHUB_RUN_NUMBER}"
+arch: "${PKG_ARCH}"
 section: net
 priority: extra
 license: MIT
